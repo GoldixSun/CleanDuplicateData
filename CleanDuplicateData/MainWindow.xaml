@@ -1,0 +1,57 @@
+﻿<Window x:Class="CleanDuplicateData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CleanDuplicateData"
+        mc:Ignorable="d"
+        Title="Поиск дубликатов данных" Height="300" Width="600"
+        Name="MainWindowView" Closed="MainWindowView_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Файл загрузки данных" Margin="10 5 5 5"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <TextBox Name="textBoxLoadFile" Text="{ Binding ElementName=MainWindowView, Path=FileNameLoad }" MinWidth="300" Margin="0 10 0 5"/>
+            <Button Name="buttonOpen" Content="Открыть" Margin="10 10 20 5" Width="100" Click="ButtonOpen_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Label Content="Поиск и удаление дубликатов" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+            <Button Name="buttonRun" Content="Выполнить" Margin="10 3 0 3" Width="100" Click="ButtonRun_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Результат" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Кол-во загруженных записей:" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Кол-во удаленных дубликатов:" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+
+                <Label Name="labelCountLoadRows" Grid.Row="1" Grid.Column="1" Content="{Binding ElementName=MainWindowView, Path=CountLoadRows}" HorizontalAlignment="Left"/>
+                <Label Name="labelCountDeleteDuplicate" Grid.Row="2" Grid.Column="1" Content="{Binding ElementName=MainWindowView, Path=CountDeleteRowsDuplicate}" HorizontalAlignment="Left"/>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</Window>
